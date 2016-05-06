@@ -21,6 +21,8 @@ The server is only visible from the EPCC LAN. Account requests on Jenkins should
 
 ## 2. Create Project and Account on ARCHER ##
 
+This has been created as project z17 on ARCHER.
+
 ## 3. Create basic monitoring tasks ##
 
 * 2016-03-30 Tasks to monitor the three compiling environments have been created and checked into the repository.
