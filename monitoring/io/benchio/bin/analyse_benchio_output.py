@@ -8,6 +8,7 @@ import sys
 import os.path
 import re
 from glob import glob
+from datetime import datetime
 
 # Modules for analysing and visualising data
 import pandas as pd
@@ -17,6 +18,7 @@ matplotlib.use('Agg')
 from matplotlib import pyplot as plt
 matplotlib.rcParams.update({'font.size': 9})
 matplotlib.rcParams.update({'figure.autolayout': True})
+from matplotlib import dates
 import seaborn as sns
 
 def main(argv):
@@ -29,6 +31,10 @@ def main(argv):
     resframe_proto = []
     for file in files:
        infile = open(file, 'r')
+       # Get date of test from file name
+       tokens = file.split('_')
+       datestring = tokens[-1].split('.')[0]
+       runtime = datetime.strptime(datestring, "%Y%m%d%H%M%S")
        resdict = {}
        resdict['JobID'] = 'Unknown'
        for line in infile:
@@ -71,6 +77,7 @@ def main(argv):
              tokens = line.split()
              timedict['Write'] = float(tokens[6])
              timedict['File'] = os.path.abspath(file)
+             timedict['RunDate'] = runtime
              timedict['Count'] = 1
              resframe_proto.append(timedict)
              curstriping = timedict['Striping']  
@@ -90,7 +97,7 @@ def main(argv):
     labels.sort()
 
     # Get copy of dataframe with only numeric values
-    resframe_num = resframe.drop(['File', 'GlobalSize', 'LocalSize', 'TotData'], 1)
+    resframe_num = resframe.drop(['File', 'GlobalSize', 'LocalSize', 'TotData', 'RunDate'], 1)
 
     # What stats are we computing on which columns
     groupf = {'Write':['min','median','max','mean'], 'Count':'sum'}
@@ -102,10 +109,25 @@ def main(argv):
     print stats.to_csv(float_format='%.3f')
 
     fig, ax = plt.subplots()
-    plt.hist(resframe['Write'].tolist(), histtype='step', linewidth=2, alpha=0.5)
+    # plt.hist(resframe['Write'].tolist(), histtype='step', linewidth=2, alpha=0.5)
+    sns.distplot(resframe['Write'].tolist(), bins=30, kde=False, rug=True);
     plt.xlabel('Bandwidth / MiB/s')
+    plt.ylabel('Count')
     plt.savefig('write_stats.png')
     plt.clf()
+
+    fig = plt.figure(1)
+    ax = plt.subplot(1, 1, 1)
+    ax.cla()
+    ax.set_ylabel('Bandwidth / MiB/s')
+    ax.set_xlim((resframe['RunDate'].min(), resframe['RunDate'].max()))
+    ax.xaxis_date()
+    sns.stripplot(x="RunDate", y="Write", data=resframe);
+    fig.autofmt_xdate()
+#    ax.scatter(resframe['RunDate'].tolist(), resframe['Write'].tolist(), marker='o', label="Write", s=50, linewidth=2, alpha=0.5, facecolors='none', color='red')
+#    ax.plot(resframe['RunDate'].tolist(), resframe['Write'].tolist(), 'r-', alpha=0.1)
+#     ax.fill_between(resframe['RunDate'].tolist(), 0, resframe['Write'].tolist(), facecolor='r', alpha=0.25)
+    fig.savefig('write_timeline.png')
 
     sys.exit(0)
 
@@ -123,6 +145,12 @@ def get_filelist(dir, stem):
         sys.exit(1)
 
     return files
+
+def get_date_from_string(datestring):
+    y = datestring[0:4]
+    m = datestring[4:6]
+    d = datestring[6:8]
+    return datetime.strptime(datestring, "%Y%m%d%H%M%S")
 
 if __name__ == "__main__":
     main(sys.argv[1:])
