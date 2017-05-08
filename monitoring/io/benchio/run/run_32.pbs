@@ -1,7 +1,7 @@
 #!/bin/bash --login
 
 #PBS -l select=32
-#PBS -l walltime=1:30:0
+#PBS -l walltime=1:00:0
 #PBS -N benchio_32
 #PBS -A z17
 
@@ -13,9 +13,9 @@ fs=fs3
 benchio_test=32
 
 # Base directories
-BASE_DIR=/work/z17/z17/jenkins/ci-monitoring/io/bechio
+BASE_DIR=/work/z17/z17/jenkins/ci-monitoring/io/benchio
 RESULT_DIR=${BASE_DIR}/${benchio_test}/${system}/${fs}
-BENCHIO=/home/z17/z17/jenkins/ci-monitoringmonitoring/io/benchio/bin/benchio.x
+BENCHIO=/home/z17/z17/jenkins/ci-monitoring/monitoring/io/benchio/bin/benchio.x
 
 # Make sure the results direcotry exists
 if [ ! -d "${RESULT_DIR}" ];
@@ -40,4 +40,22 @@ timestamp=$(date '+%Y%m%d%H%M%S')
 outfile=${RESULT_DIR}/benchio_res_c${clients}_${timestamp}.dat
 echo "${timestamp} Running benchio: clients=${clients}"
 aprun -n ${clients} $BENCHIO >> ${outfile}
+
+BASE_DIR=/work/z17/z17/jenkins/ci-monitoring/io/benchio_fpp
+RESULT_DIR=${BASE_DIR}/${benchio_test}/${system}/${fs}
+BENCHIO_FPP=/home/z17/z17/jenkins/benchio/file-per-process/source/benchio_fpp.x
+# Make sure the results direcotry exists
+if [ ! -d "${RESULT_DIR}" ];
+then
+   mkdir -p ${RESULT_DIR}
+fi
+cd ${RESULT_DIR}
+if [ ! -d "unstriped" ]; then
+   mkdir -p "unstriped"
+fi
+lfs setstripe -c 1 unstriped
+timestamp=$(date '+%Y%m%d%H%M%S')
+outfile=${RESULT_DIR}/benchio_res_c${clients}_${timestamp}.dat
+echo "${timestamp} Running benchio_fpp: clients=${clients}"
+aprun -n ${clients} $BENCHIO_FPP >> ${outfile}
 

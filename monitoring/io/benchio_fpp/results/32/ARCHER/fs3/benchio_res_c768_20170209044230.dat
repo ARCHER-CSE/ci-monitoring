@@ -1,0 +1,37 @@
+ 
+ Simple Parallel IO benchmark
+ ----------------------------
+ 
+ Running on  768  process(es)
+ Process grid is ( 8 ,  8 ,  12 )
+ Array size is   ( 512 ,  512 ,  512 )
+ Global size is  ( 4096 ,  4096 ,  6144 )
+ 
+ Total amount of data =  786432.  MiB
+ 
+ Clock resolution is  3.70233246945575673E-4 , usecs
+ 
+ ------
+ File per process                                                
+ ------
+ 
+ Writing to unstriped/fpp                                                   
+ time =  84.313025014707819 , rate =  9327.5267950926027  MiB/s
+ time =  74.589397764764726 , rate =  10543.482365686863  MiB/s
+ time =  76.581444726325572 , rate =  10269.223867614721  MiB/s
+ time =  70.594575722934678 , rate =  11140.119363937263  MiB/s
+ time =  72.617210503667593 , rate =  10829.829382667909  MiB/s
+ time =  72.370672592893243 , rate =  10866.722276078821  MiB/s
+ time =  75.872445757500827 , rate =  10365.185834572263  MiB/s
+ time =  71.827861636178568 , rate =  10948.843277326338  MiB/s
+ time =  66.81223466899246 , rate =  11770.778269821632  MiB/s
+ time =  68.4532352888491 , rate =  11488.602352854872  MiB/s
+ mintime =  66.81223466899246 , maxrate =  11770.778269821632  MiB/s
+ avgtime =  73.403210367681453 , avgrate =  10755.031378565329  MiB/s
+ 
+ 
+ --------
+ Finished
+ --------
+ 
+Application 25219985 resources: utime ~321570s, stime ~16364s, Rss ~1072036, inblocks ~374520, outblocks ~16106802851
