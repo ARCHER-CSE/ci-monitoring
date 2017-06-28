@@ -1,0 +1,26 @@
+#!/bin/bash --login
+#
+#PBS -N CASTEP_DNA
+#PBS -l select=500
+#PBS -l walltime=3:0:0
+#PBS -A z19
+
+cd $PBS_O_WORKDIR
+
+module load castep/16.1.2
+
+INPUT_DIR=/home/z17/z17/jenkins/ci-monitoring/monitoring/applications/castep/run
+RES_DIR=/home/z17/z17/jenkins/ci-monitoring/monitoring/applications/castep/results
+WORK_DIR=/work/z17/z17/jenkins/ci-monitoring/apps/castep
+
+cd ${WORK_DIR}
+
+cp ${INPUT_DIR}/* .
+
+export OMP_NUM_THREADS=6
+aprun -n 2000 -ppn 4 d 6 castep.mpi polyA20-no-wat > stdout.txt 2> stderr.txt
+
+timestamp=$(date '+%Y%m%d%H%M%S')
+outfile=${RES_DIR}/castep_res_${timestamp}.castep
+mv polyA20-no-wat.castep ${outfile}
+

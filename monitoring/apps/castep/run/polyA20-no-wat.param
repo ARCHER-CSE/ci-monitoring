@@ -1,0 +1,27 @@
+task              : energy
+cutoff_energy     : 1000 eV
+xc_functional     : rpbe
+
+metals_method     : dm
+mix_charge_amp    : 0.4
+mixing_scheme     : pulay
+
+finite_basis_corr : 0
+smearing_width    : 0.1 eV
+
+rand_seed         : 123456789
+
+fix_occupancy     : false
+
+nextra_bands      : 40
+elec_energy_tol   : 0.0001 eV
+
+opt_strategy_bias : +3
+page_wvfns        : 0
+num_dump_cycles   : 0
+write_checkpoint  : none
+
+%block devel_code
+bandpar=8
+%endblock devel_code
+

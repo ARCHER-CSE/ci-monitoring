@@ -1,0 +1,12 @@
+#!/bin/bash --login
+
+#$ -S /bin/bash
+#$ -l h_rt=3:0:0
+#$ -N cp2k_lih
+#$ -pe mpi 96
+#$ -wd /home/mmm0074/benchmarks/ARCHER_apps/CP2K/LiH
+
+module load cp2k
+
+cp2k.psmp input_bulk_B88_3.inp > stdout.txt 2> stderr.txt
+
