@@ -9,8 +9,8 @@ cd $PBS_O_WORKDIR
 
 module load castep/16.1.2
 
-INPUT_DIR=/home/z17/z17/jenkins/ci-monitoring/monitoring/applications/castep/run
-RES_DIR=/home/z17/z17/jenkins/ci-monitoring/monitoring/applications/castep/results
+INPUT_DIR=/home/z17/z17/jenkins/ci-monitoring/monitoring/apps/castep/run
+RES_DIR=/home/z17/z17/jenkins/ci-monitoring/monitoring/apps/castep/results
 WORK_DIR=/work/z17/z17/jenkins/ci-monitoring/apps/castep
 
 cd ${WORK_DIR}
