@@ -3,7 +3,7 @@
 #PBS -N CASTEP_DNA
 #PBS -l select=500
 #PBS -l walltime=3:0:0
-#PBS -A z19
+#PBS -A z17
 
 cd $PBS_O_WORKDIR
 
@@ -18,7 +18,7 @@ cd ${WORK_DIR}
 cp ${INPUT_DIR}/* .
 
 export OMP_NUM_THREADS=6
-aprun -n 2000 -ppn 4 d 6 castep.mpi polyA20-no-wat > stdout.txt 2> stderr.txt
+aprun -n 2000 -N 4 -d 6 castep.mpi polyA20-no-wat
 
 timestamp=$(date '+%Y%m%d%H%M%S')
 outfile=${RES_DIR}/castep_res_${timestamp}.castep
