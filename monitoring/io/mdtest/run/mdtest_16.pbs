@@ -1,0 +1,33 @@
+#!/bin/bash --login
+#
+#PBS -N mdtest_16
+#PBS -l select=16
+#PBS -l walltime=1:0:0
+#PBS -A z17
+
+cd $PBS_O_WORKDIR
+
+nodes=16
+nfile=1048576
+cpn=24
+
+mdtest="/home/z17/z17/jenkins/software/ior/src/mdtest"
+workdir="/work/z17/z17/jenkins/ci-monitoring/io/mdtest"
+testdir="${workdir}/tmpdir"
+resdir="/home/z17/z17/jenkins/ci-monitoring/monitoring/io/mdtest/results/ARCHER/fs3"
+
+cores=$(( nodes * 24 ))
+filespercore=$(( nfile / cores ))
+
+cd ${workdir}
+
+timestamp=$(date '+%Y%m%d%H%M')
+aprun -n $cores -N $cpn $mdtest -n ${filespercore} -F -C -T -r -N $cpn -d ${testdir} > mdtest_mp-mf-sd_${nfile}_${nodes}nodes_${timestamp}.log
+rm -r $testdir
+aprun -n $cores -N $cpn $mdtest -n ${filespercore} -u -F -C -T -r -N $cpn -d ${testdir} > mdtest_mp-mf-md_${nfile}_${nodes}nodes_${timestamp}.log
+rm -r $testdir
+aprun -n $cores -N $cpn $mdtest -n 1 -S -F -C -T -r -d ${testdir} > mdtest_mp-sf-sd_${nfile}_${nodes}nodes_${timestamp}.log
+rm -r $testdir
+
+cp mdtest_* ${resdir}
+
