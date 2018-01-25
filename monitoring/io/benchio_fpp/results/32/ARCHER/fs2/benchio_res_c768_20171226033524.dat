@@ -1,0 +1,38 @@
+ 
+ Simple Parallel IO benchmark
+ ----------------------------
+ 
+ Running on  768  process(es)
+ Process grid is ( 8 ,  8 ,  12 )
+ Array size is   ( 512 ,  512 ,  512 )
+ Global size is  ( 4096 ,  4096 ,  6144 )
+ 
+ Total amount of data =  786432.  MiB
+ 
+ Clock resolution is  3.70233246945575673E-4 , usecs
+ 
+ ------
+ File per process                                                
+ ------
+ 
+ Writing to unstriped/fpp                                                   
+ time =  59.976667002774775 , rate =  13112.299153996275  MiB/s
+ time =  60.373573247343302 , rate =  13026.09664626081  MiB/s
+ time =  65.407347487751395 , rate =  12023.603313790891  MiB/s
+ time =  66.897374986670911 , rate =  11755.797595297186  MiB/s
+ time =  53.777570965699852 , rate =  14623.791775600988  MiB/s
+ time =  51.696368234697729 , rate =  15212.519309473661  MiB/s
+ time =  52.965669933706522 , rate =  14847.957195374338  MiB/s
+ time =  56.640934622846544 , rate =  13884.516652781129  MiB/s
+ time =  50.496095287147909 , rate =  15574.115097967981  MiB/s
+ time =  55.740405956283212 , rate =  14108.831582905816  MiB/s
+ mintime =  50.496095287147909 , maxrate =  15574.115097967981  MiB/s
+ avgtime =  57.397200772492212 , avgrate =  13816.95283234491  MiB/s
+ 
+ 
+ --------
+ Finished
+ --------
+ 
+Application 29606087 network throttled: 32 nodes throttled, 00:10:40 node-seconds
+Application 29606087 resources: utime ~259393s, stime ~16735s, Rss ~1071932, inblocks ~380792, outblocks ~16106802851
