@@ -1,0 +1,61 @@
+#!/bin/bash --login
+
+#PBS -l select=32
+#PBS -l walltime=1:00:0
+#PBS -N benchio_fs2
+#PBS -A z17
+
+cd $PBS_O_WORKDIR
+
+# System and file system identifier
+system=ARCHER
+fs=fs2
+benchio_test=32
+
+# Base directories
+BASE_DIR=/fs2/z17/z17/jenkins/ci-monitoring/io/benchio
+RESULT_DIR=${BASE_DIR}/${benchio_test}/${system}/${fs}
+BENCHIO=/home/z17/z17/jenkins/ci-monitoring/monitoring/io/benchio/bin/benchio.x
+
+# Make sure the results directory exists
+if [ ! -d "${RESULT_DIR}" ];
+then
+   mkdir -p ${RESULT_DIR}
+fi
+
+# Basic test parameters
+clients=768
+
+cd ${RESULT_DIR}
+if [ ! -d "striped" ]; then
+   mkdir "striped"
+fi
+lfs setstripe -c -1 striped
+if [ ! -d "defstriped" ]; then
+   mkdir -p "defstriped"
+fi
+lfs setstripe -c 1 defstriped
+
+timestamp=$(date '+%Y%m%d%H%M%S')
+outfile=${RESULT_DIR}/benchio_res_c${clients}_${timestamp}.dat
+echo "${timestamp} Running benchio: clients=${clients}"
+aprun -n ${clients} $BENCHIO >> ${outfile}
+
+BASE_DIR=/fs2/z17/z17/jenkins/ci-monitoring/io/benchio_fpp
+RESULT_DIR=${BASE_DIR}/${benchio_test}/${system}/${fs}
+BENCHIO_FPP=/home/z17/z17/jenkins/benchio/file-per-process/source/benchio_fpp.x
+# Make sure the results direcotry exists
+if [ ! -d "${RESULT_DIR}" ];
+then
+   mkdir -p ${RESULT_DIR}
+fi
+cd ${RESULT_DIR}
+if [ ! -d "unstriped" ]; then
+   mkdir -p "unstriped"
+fi
+lfs setstripe -c 1 unstriped
+timestamp=$(date '+%Y%m%d%H%M%S')
+outfile=${RESULT_DIR}/benchio_res_c${clients}_${timestamp}.dat
+echo "${timestamp} Running benchio_fpp: clients=${clients}"
+aprun -n ${clients} $BENCHIO_FPP >> ${outfile}
+
