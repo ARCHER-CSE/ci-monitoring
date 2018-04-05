@@ -41,7 +41,7 @@ outfile=${RESULT_DIR}/benchio_res_c${clients}_${timestamp}.dat
 echo "${timestamp} Running benchio: clients=${clients}"
 aprun -n ${clients} $BENCHIO >> ${outfile}
 
-BASE_DIR=/work/z17/z17/jenkins/ci-monitoring/io/benchio_fpp
+BASE_DIR=/fs3/z17/z17/jenkins/ci-monitoring/io/benchio_fpp
 RESULT_DIR=${BASE_DIR}/${benchio_test}/${system}/${fs}
 BENCHIO_FPP=/home/z17/z17/jenkins/benchio/file-per-process/source/benchio_fpp.x
 # Make sure the results direcotry exists
