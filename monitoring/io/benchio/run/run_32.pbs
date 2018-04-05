@@ -13,7 +13,7 @@ fs=fs3
 benchio_test=32
 
 # Base directories
-BASE_DIR=/work/z17/z17/jenkins/ci-monitoring/io/benchio
+BASE_DIR=/fs3/z17/z17/jenkins/ci-monitoring/io/benchio
 RESULT_DIR=${BASE_DIR}/${benchio_test}/${system}/${fs}
 BENCHIO=/home/z17/z17/jenkins/ci-monitoring/monitoring/io/benchio/bin/benchio.x
 
