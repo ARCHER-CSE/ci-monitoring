@@ -1,0 +1,123 @@
+ 
+ Simple Parallel IO benchmark
+ ----------------------------
+ 
+ Running on  768  process(es)
+ Process grid is ( 8 ,  8 ,  12 )
+ Array size is   ( 128 ,  128 ,  128 )
+ Global size is  ( 1024 ,  1024 ,  1536 )
+ 
+ Total amount of data =  12288.  MiB
+ 
+ Clock resolution is  3.70233246945575673E-4 , usecs
+ 
+ ------
+ MPI-IO                                                          
+ ------
+ 
+ Writing to striped/mpiio.dat                                               
+ time =  0.93742578290402889 , rate =  13108.23771235873  MiB/s
+ time =  1.059368621557951 , rate =  11599.361874555774  MiB/s
+ time =  1.2049223966896534 , rate =  10198.167146497955  MiB/s
+ time =  0.90440034493803978 , rate =  13586.903265546463  MiB/s
+ time =  0.97252707555890083 , rate =  12635.123801502616  MiB/s
+ time =  0.87867334485054016 , rate =  13984.719204256906  MiB/s
+ time =  0.9026874415576458 , rate =  13612.685226678526  MiB/s
+ time =  1.0986087303608656 , rate =  11185.05584418913  MiB/s
+ time =  0.9613364078104496 , rate =  12782.206000069511  MiB/s
+ time =  1.1312737539410591 , rate =  10862.092360219489  MiB/s
+ mintime =  0.87867334485054016 , maxrate =  13984.719204256906  MiB/s
+ avgtime =  1.0051223900169135 , avgrate =  12355.45524358751  MiB/s
+ Deleting: striped/mpiio.dat                                               
+ 
+ Writing to defstriped/mpiio.dat                                            
+ time =  9.2948209960013628 , rate =  1322.0265355606423  MiB/s
+ time =  24.323629431426525 , rate =  505.18776544604418  MiB/s
+ time =  7.6258905176073313 , rate =  1611.3527950117273  MiB/s
+ time =  11.441184911876917 , rate =  1074.0146317575916  MiB/s
+ time =  10.793300732970238 , rate =  1138.4839822413094  MiB/s
+ time =  10.507249519228935 , rate =  1169.4782709321005  MiB/s
+ time =  10.904088335111737 , rate =  1126.9167694131745  MiB/s
+ time =  9.863666919991374 , rate =  1245.7841591442086  MiB/s
+ time =  9.9666897729039192 , rate =  1232.9068406851534  MiB/s
+ time =  10.023460434749722 , rate =  1225.9239291651697  MiB/s
+ mintime =  7.6258905176073313 , maxrate =  1611.3527950117273  MiB/s
+ avgtime =  11.474398157186807 , avgrate =  1165.2075679357122  MiB/s
+ Deleting: defstriped/mpiio.dat                                            
+ 
+ 
+ ------
+  HDF5                                                           
+ ------
+ 
+ Writing to striped/hdf5.dat                                                
+ time =  9.1816333197057247 , rate =  1338.3239748452334  MiB/s
+ time =  9.7084079291671515 , rate =  1265.7070128957944  MiB/s
+ time =  10.908491849899292 , rate =  1126.4618582552678  MiB/s
+ time =  9.4779183510690928 , rate =  1296.4872184844191  MiB/s
+ time =  9.3197292108088732 , rate =  1318.4932439612703  MiB/s
+ time =  10.718120502308011 , rate =  1146.4696629743933  MiB/s
+ time =  10.138506339862943 , rate =  1212.0128535784015  MiB/s
+ time =  10.471841169521213 , rate =  1173.4326181115889  MiB/s
+ time =  9.0255982577800751 , rate =  1361.4609967165036  MiB/s
+ time =  9.1035630572587252 , rate =  1349.8011627658429  MiB/s
+ mintime =  9.0255982577800751 , maxrate =  1361.4609967165036  MiB/s
+ avgtime =  9.8053809987381122 , avgrate =  1258.8650602588716  MiB/s
+ Deleting: striped/hdf5.dat                                                
+ 
+ Writing to defstriped/hdf5.dat                                             
+ time =  18.254316128790379 , rate =  673.15586699079824  MiB/s
+ time =  15.522457979619503 , rate =  791.62720338066015  MiB/s
+ time =  16.593859331682324 , rate =  740.51489496109969  MiB/s
+ time =  18.064589783549309 , rate =  680.22579794146145  MiB/s
+ time =  25.645582819357514 , rate =  479.14684125349288  MiB/s
+ time =  19.329385658726096 , rate =  635.71601379129606  MiB/s
+ time =  29.384277297183871 , rate =  418.18282191264433  MiB/s
+ time =  14.804417325183749 , rate =  830.02253517245288  MiB/s
+ time =  16.730690378695726 , rate =  734.45863391549631  MiB/s
+ time =  17.548272080719471 , rate =  700.23988364649279  MiB/s
+ mintime =  14.804417325183749 , maxrate =  830.02253517245288  MiB/s
+ avgtime =  19.187784878350797 , avgrate =  668.32904929658957  MiB/s
+ Deleting: defstriped/hdf5.dat                                             
+ 
+ 
+ ------
+ NetCDF                                                          
+ ------
+ 
+ Writing to striped/netcdf.dat                                              
+ time =  12.160769660025835 , rate =  1010.4623591706032  MiB/s
+ time =  9.8425974473357201 , rate =  1248.4509364269716  MiB/s
+ time =  10.404915913939476 , rate =  1180.9802310403829  MiB/s
+ time =  9.5178926456719637 , rate =  1291.0420885643921  MiB/s
+ time =  10.422597074881196 , rate =  1178.9767858928833  MiB/s
+ time =  14.878745241090655 , rate =  825.87609377598653  MiB/s
+ time =  9.8402216956019402 , rate =  1248.7523533633482  MiB/s
+ time =  9.6814775783568621 , rate =  1269.2277496433055  MiB/s
+ time =  10.348417034372687 , rate =  1187.4279862499654  MiB/s
+ time =  10.488741740584373 , rate =  1171.5418592540711  MiB/s
+ mintime =  9.5178926456719637 , maxrate =  1291.0420885643921  MiB/s
+ avgtime =  10.758637603186072 , avgrate =  1161.2738443381909  MiB/s
+ Deleting: striped/netcdf.dat                                              
+ 
+ Writing to defstriped/netcdf.dat                                           
+ time =  18.917589170858264 , rate =  649.55422644071041  MiB/s
+ time =  18.546361967921257 , rate =  662.55581667466413  MiB/s
+ time =  15.641197293996811 , rate =  785.61760772087507  MiB/s
+ time =  21.681978581473231 , rate =  566.73794570112818  MiB/s
+ time =  20.520837599411607 , rate =  598.80596688472076  MiB/s
+ time =  16.959422560408711 , rate =  724.55297084736753  MiB/s
+ time =  16.552272114902735 , rate =  742.37542221992453  MiB/s
+ time =  15.817451909184456 , rate =  776.86343353855443  MiB/s
+ time =  16.53022957034409 , rate =  743.36535664605503  MiB/s
+ time =  17.911474933847785 , rate =  686.04065524380928  MiB/s
+ mintime =  15.641197293996811 , maxrate =  785.61760772087507  MiB/s
+ avgtime =  17.907881570234892 , avgrate =  693.64694019178091  MiB/s
+ Deleting: defstriped/netcdf.dat                                           
+ 
+ 
+ --------
+ Finished
+ --------
+ 
+Application 30546241 resources: utime ~588425s, stime ~1595s, Rss ~131456, inblocks ~800128, outblocks ~1511272643
